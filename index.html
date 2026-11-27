@@ -2157,12 +2157,12 @@ window.LESSONS[2] = {
     var toc = "<aside class='toc' aria-label='Зміст уроку'><h3>Зміст уроку</h3><ol>" +
       "<li><button data-go='sec-goal'><span>Мета й результати</span></button></li>" +
       "<li><button data-go='sec-plan'><span>План заняття</span></button></li>" +
-      "<li><button data-go='warmup'><span class='t'>0–5</span><span>Актуалізація знань</span></button></li>" +
-      "<li><button data-go='rules'><span class='t'>5–30</span><span>Теорія і вправи</span></button></li>" +
-      L.rules.map(function (r, i) { return "<li class='sub'><button data-go='" + r.id + "' class='" + (ruleDone(p, r) ? "done" : "") + "'><span>" + (i + 1) + ". " + fmt(r.title) + (r.time ? " <span class='t'>" + r.time + "</span>" : "") + "</span></button></li>"; }).join("") +
-      "<li><button data-go='practicum'><span class='t'>30–45</span><span>" + esc(L.practicumTitle || "Практикум НМТ") + "</span></button></li>" +
-      "<li><button data-go='final'><span class='t'>45–55</span><span>Підсумковий тест</span></button></li>" +
-      "<li><button data-go='summary'><span class='t'>55–60</span><span>Підсумок і ДЗ</span></button></li>" +
+      "<li><button data-go='warmup'><span>Актуалізація знань</span></button></li>" +
+      "<li><button data-go='rules'><span>Теорія і вправи</span></button></li>" +
+      L.rules.map(function (r, i) { return "<li class='sub'><button data-go='" + r.id + "' class='" + (ruleDone(p, r) ? "done" : "") + "'><span>" + (i + 1) + ". " + fmt(r.title) + "</span></button></li>"; }).join("") +
+      "<li><button data-go='practicum'><span>" + esc(L.practicumTitle || "Практикум НМТ") + "</span></button></li>" +
+      "<li><button data-go='final'><span>Підсумковий тест</span></button></li>" +
+      "<li><button data-go='summary'><span>Підсумок і ДЗ</span></button></li>" +
       "<li><button data-go='extra'><span>Додатковий тест</span></button></li>" +
       "<li><button data-go='lesson-res'><span>Результати уроку</span></button></li>" +
       "</ol><div class='bar' style='margin-top:10px'><span style='width:" + prog + "%'></span></div><div class='small muted'>Прогрес уроку: " + prog + "%</div></aside>";
