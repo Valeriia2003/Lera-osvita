@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Додаткові тести (варіант 2) до курсу «Фонетика. Графіка. Орфоепія» для підготовки до НМТ з української мови">
+<title>Додаткові тести | Підготовка до НМТ</title>
+<style>
+:root{
+  --bg:#f3f6fa; --surface:#ffffff; --surface-2:#eef3f8; --text:#1b2433; --muted:#5b6678;
+  --primary:#123a6b; --primary-2:#1d5394; --accent:#14a3a0; --accent-soft:#e1f5f4;
+  --ok:#1f8a4c; --ok-soft:#e6f5ec; --bad:#c0392b; --bad-soft:#fbeaea;
+  --border:#d9e1ea; --radius:12px; --shadow:0 1px 3px rgba(18,58,107,.08),0 4px 14px rgba(18,58,107,.05);
+  --font: "Segoe UI", "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+}
+[data-theme="dark"]{
+  --bg:#0f1622; --surface:#172131; --surface-2:#1e2a3d; --text:#e6ecf4; --muted:#9aa8bb;
+  --primary:#7fb0ee; --primary-2:#9cc3f5; --accent:#38c7c3; --accent-soft:#163a3d;
+  --ok:#4cc27e; --ok-soft:#163525; --bad:#ef7a6c; --bad-soft:#3a1d1c;
+  --border:#2b3a50; --shadow:none;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:17px;line-height:1.6}
+a{color:var(--primary-2)}
+h1,h2,h3{line-height:1.25;color:var(--primary);margin:0 0 .6em}
+[data-theme="dark"] h1,[data-theme="dark"] h2,[data-theme="dark"] h3{color:var(--primary-2)}
+h1{font-size:1.75rem} h2{font-size:1.4rem} h3{font-size:1.1rem}
+p{margin:.4em 0 .8em}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.topbar{position:sticky;top:0;z-index:20;background:var(--primary);color:#fff;box-shadow:var(--shadow)}
+[data-theme="dark"] .topbar{background:#0b1a2e;border-bottom:1px solid var(--border)}
+.topbar-in{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap}
+.brand{font-weight:700;color:#fff;text-decoration:none;font-size:1.02rem;margin-right:auto}
+.brand small{display:block;font-weight:400;opacity:.8;font-size:.78rem}
+.wrap{max-width:960px;margin:0 auto;padding:20px 16px 60px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-bottom:18px}
+.muted{color:var(--muted)} .small{font-size:.88rem}
+.pill{display:inline-block;font-size:.78rem;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:.95rem;font-weight:600;padding:9px 16px;border-radius:9px;border:1px solid var(--primary);background:var(--primary);color:#fff;cursor:pointer;text-decoration:none;min-height:42px}
+[data-theme="dark"] .btn{background:var(--primary-2);border-color:var(--primary-2);color:#0f1622}
+.btn.sec{background:transparent;color:var(--primary)}
+[data-theme="dark"] .btn.sec{color:var(--primary-2)}
+.btn.acc{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.danger{background:transparent;border-color:var(--bad);color:var(--bad)}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.theme-btn{color:#fff!important;border-color:rgba(255,255,255,.5)!important;background:transparent!important;min-height:36px;padding:5px 10px}
+.lesson-item{display:flex;gap:14px;align-items:flex-start}
+.lesson-num{flex:0 0 42px;height:42px;border-radius:10px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+[data-theme="dark"] .lesson-num{background:var(--primary-2);color:#0f1622}
+.lesson-item h2{font-size:1.15rem;margin-bottom:4px}
+.test-top{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;font-size:1.15rem;background:var(--surface-2);padding:4px 12px;border-radius:8px}
+.timer.low{color:var(--bad)}
+.qnav{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.qnav button{width:40px;height:40px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font:inherit;font-weight:600;cursor:pointer}
+.qnav button.ans{background:var(--accent-soft);border-color:var(--accent)}
+.qnav button.cur{outline:3px solid var(--primary-2)}
+.q{font-weight:600;margin:4px 0 10px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border:1px solid var(--border);border-radius:8px;margin:6px 0;cursor:pointer;background:var(--surface)}
+.opt:hover{background:var(--surface-2)}
+.opt input{margin-top:5px;width:18px;height:18px;flex:0 0 auto}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:7px 0;border-bottom:1px dashed var(--border)}
+.row:last-child{border-bottom:0}
+.row .lbl{flex:1 1 240px}
+select{font:inherit;font-size:.95rem;padding:7px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);min-height:40px;max-width:100%}
+.score-big{font-size:2.4rem;font-weight:800;color:var(--primary)}
+[data-theme="dark"] .score-big{color:var(--primary-2)}
+.review-item{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin:10px 0}
+.review-item.ok{border-left:5px solid var(--ok)}
+.review-item.bad{border-left:5px solid var(--bad)}
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--surface-2);color:var(--primary);font-weight:700}
+.footer{text-align:center;color:var(--muted);font-size:.85rem;padding:20px}
+@media (max-width:560px){ body{font-size:16px} .card{padding:14px} h1{font-size:1.4rem} .brand small{display:none} .topbar{position:static} }
+</style>
+</head>
+<body>
+<header class="topbar" id="topbar"></header>
+<main class="wrap" id="app" tabindex="-1"></main>
+<footer class="footer">Додаткові тести до авторського курсу підготовки до НМТ з української мови. Тестові завдання не є офіційними завданнями НМТ.</footer>
+<noscript><p style="padding:20px">Для роботи сайту потрібно увімкнути JavaScript.</p></noscript>
+
+<script>
+/* Тести. Варіант 2. Наголос позначено знаком ` після наголошеної букви.
+   Для single: answer — індекс правильного варіанта (0 = А, 1 = Б, 2 = В, 3 = Г).
+   Для match: items[i].a — індекс правильного варіанта в options. */
+window.TESTS = [
+  {
+    id: "l0-v2", lesson: 0, lessonTitle: "Вступ. Що вивчає кожен розділ мовознавства",
+    title: "Урок 0. Додатковий тест, варіант 2", minutes: 8,
+    questions: [
+      { id: "v2-0-1", type: "single", q: "Фонетика вивчає",
+        options: ["правила написання слів", "звуки мовлення та їх зміни", "систему знаків письма", "норми наголошування"], answer: 1,
+        explain: "Фонетика — це звуки мовлення: які вони бувають і як змінюються. Написання — орфографія, знаки письма — графіка, наголошування — орфоепія." },
+      { id: "v2-0-2", type: "single", q: "Орфографія вивчає",
+        options: ["звуки мовлення", "співвідношення букв і звуків", "норми вимови", "правила написання слів"], answer: 3,
+        explain: "Орфографія відповідає на питання «Як правильно написати?»." },
+      { id: "v2-0-3", type: "single", q: "Питання «Скільки букв в українському алфавіті?» належить до розділу",
+        options: ["графіка", "фонетика", "орфоепія", "орфографія"], answer: 0,
+        explain: "Алфавіт і букви вивчає графіка." },
+      { id: "v2-0-4", type: "single", q: "Питання «Як писати: сестра чи систра?» належить до розділу",
+        options: ["фонетика", "графіка", "орфографія", "орфоепія"], answer: 2,
+        explain: "Вибір букви під час письма — питання орфографії." },
+      { id: "v2-0-5", type: "single", q: "Питання «Катало`г чи ката`лог?» належить до розділу",
+        options: ["графіка", "орфографія", "орфоепія", "фонетика"], answer: 2,
+        explain: "Нормативний наголос визначає орфоепія. Правильно: катало`г." },
+      { id: "v2-0-6", type: "single", q: "Питання «Чому в слові «вокзал» замість [к] звучить [ґ]?» належить до розділу",
+        options: ["фонетика", "графіка", "орфоепія", "орфографія"], answer: 0,
+        explain: "Зміни звуків у потоці мовлення (уподібнення) вивчає фонетика." },
+      { id: "v2-0-7", type: "single", q: "НЕПРАВИЛЬНИМ є твердження",
+        options: ["Графіка вивчає алфавіт і назви букв.", "Орфоепія встановлює норми вимови й наголошування.", "Фонетика вивчає склад і наголос як явища.", "Орфографія вивчає, як змінюються звуки в мовленні."], answer: 3,
+        explain: "Зміни звуків вивчає фонетика. Орфографія — це правила написання." },
+      { id: "v2-0-8", type: "single", q: "Пишемо «сміється», а вимовляємо [с'м'ійе`ц':а]. Це",
+        options: ["помилка в написанні", "звичайна розбіжність між вимовою та написанням", "помилка у вимові", "ознака діалекту"], answer: 1,
+        explain: "Вимову регулює орфоепія, написання — орфографія. Їхні норми можуть не збігатися, і це не помилка." },
+      { id: "v2-0-9", type: "match", q: "Установіть відповідність між питанням і розділом мовознавства.",
+        items: [
+          { t: "1 правильний наголос у слові «новий»", a: 2 },
+          { t: "2 дзвінкі й глухі приголосні", a: 0 },
+          { t: "3 чи писати м’який знак у слові «сільський»", a: 3 },
+          { t: "4 скільки звуків позначає буква ї", a: 1 }
+        ],
+        options: ["А фонетика", "Б графіка", "В орфоепія", "Г орфографія", "Д лексикологія"],
+        explain: "Наголос — орфоепія (но`вий); властивості звуків — фонетика; написання — орфографія; співвідношення букв і звуків — графіка." }
+    ]
+  },
+  {
+    id: "l1-v2", lesson: 1, lessonTitle: "Український алфавіт. Голосні звуки",
+    title: "Урок 1. Додатковий тест, варіант 2", minutes: 25,
+    questions: [
+      { id: "v2-1-1", type: "single", q: "Правильно названо всі букви в рядку",
+        options: ["ка, ле, ем, ен", "ка, ел, ме, ен", "ка, ел, ем, ен", "ка, ел, ем, не"], answer: 2,
+        explain: "К — ка, Л — ел, М — ем, Н — ен." },
+      { id: "v2-1-2", type: "single", q: "Буква ь в українському алфавіті стоїть",
+        options: ["між щ та ю", "у кінці алфавіту", "між ш та щ", "на початку алфавіту"], answer: 0,
+        explain: "З 1990 року м’який знак стоїть після щ, перед ю." },
+      { id: "v2-1-3", type: "single", q: "Букву ґ повернули до українського алфавіту в",
+        options: ["1619 році", "1933 році", "2019 році", "1990 році"], answer: 3,
+        explain: "1619 — Мелетій Смотрицький увів літеру ґ, 1933 — її вилучили, 1990 — повернули." },
+      { id: "v2-1-4", type: "single", q: "За алфавітом розміщено слова в рядку",
+        options: ["ґанок, гай, дуб", "гай, ґанок, дуб", "гай, дуб, ґанок", "дуб, гай, ґанок"], answer: 1,
+        explain: "В алфавіті г стоїть перед ґ, а ґ — перед д." },
+      { id: "v2-1-5", type: "single", q: "Першим в алфавітному списку буде слово",
+        options: ["їжак", "ірис", "йогурт", "єнот"], answer: 3,
+        explain: "Порядок букв: є → і → ї → й." },
+      { id: "v2-1-6", type: "single", q: "За алфавітом розміщено слова в рядку",
+        options: ["сон, сонце, соняшник", "сон, соняшник, сонце", "сонце, сон, соняшник", "соняшник, сонце, сон"], answer: 0,
+        explain: "«Сон» — початок інших слів, тому стоїть першим. «Сонце» й «соняшник» відрізняються п’ятою буквою: ц раніше за я." },
+      { id: "v2-1-7", type: "single", q: "Звуків більше, ніж букв, у кожному слові рядка",
+        options: ["щука, кінь, щит", "щука, їжак, день", "щука, їжак, щит", "мова, їжак, щит"], answer: 2,
+        explain: "Щ і ї позначають по два звуки. У словах кінь і день звуків менше, ніж букв, у слові мова — порівну." },
+      { id: "v2-1-8", type: "single", q: "Два окремі звуки позначають букви д і з у слові",
+        options: ["дзиґа", "відзначити", "ґедзь", "дзвоник"], answer: 1,
+        explain: "від-значити: д належить до префікса, з — до кореня. В інших словах дз стоїть у корені й позначає один звук." },
+      { id: "v2-1-9", type: "single", q: "Скільки звуків у слові «бджілка»?",
+        options: ["5", "6", "7", "8"], answer: 1,
+        explain: "Букв 7, але дж у корені позначає один звук: [б], [д͡ж], [і], [л], [к], [а] — 6 звуків." },
+      { id: "v2-1-10", type: "single", q: "Кількість букв і звуків у слові «їжачок»",
+        options: ["6 букв, 6 звуків", "7 букв, 6 звуків", "6 букв, 5 звуків", "6 букв, 7 звуків"], answer: 3,
+        explain: "Ї позначає два звуки [йі], тому звуків на один більше: 6 букв, 7 звуків." },
+      { id: "v2-1-11", type: "single", q: "Однакова кількість звуків і букв у слові",
+        options: ["сестра", "пісенька", "щедрий", "ґудзик"], answer: 0,
+        explain: "сестра: 6 букв, 6 звуків. У слові пісенька ь звука не позначає, у слові щедрий щ — два звуки, у слові ґудзик дз — один звук." },
+      { id: "v2-1-12", type: "single", q: "Голосний звук [і] є в кожному слові рядка",
+        options: ["ліс, юнак, сіль", "єнот, їжак, сіль", "ліс, їжак, сіль", "ліс, їжак, сон"], answer: 2,
+        explain: "У буквах і та ї міститься голосний [і]: ліс, їжак, сіль." },
+      { id: "v2-1-13", type: "single", q: "Скільки РІЗНИХ голосних звуків у слові «яблуня»?",
+        options: ["1", "2", "3", "4"], answer: 1,
+        explain: "я-блу-ня: [а], [у], [а] — два різні голосні звуки." },
+      { id: "v2-1-14", type: "single", q: "Окремого звука [ю] в українській мові немає, бо в букві ю міститься голосний",
+        options: ["[у]", "[і]", "[а]", "[е]"], answer: 0,
+        explain: "Буква ю містить той самий голосний [у], що й буква у: лук — люк." },
+      { id: "v2-1-15", type: "match", q: "Установіть відповідність між словом і кількістю складів у ньому.",
+        items: [ { t: "1 зошит", a: 1 }, { t: "2 абетка", a: 2 }, { t: "3 кит", a: 0 }, { t: "4 бібліотека", a: 4 } ],
+        options: ["А один", "Б два", "В три", "Г чотири", "Д п’ять"],
+        explain: "Складів стільки, скільки голосних: зо-шит (2), а-бет-ка (3), кит (1), бі-блі-о-те-ка (5)." },
+      { id: "v2-1-16", type: "single", q: "Ненаголошений [е] наближається до [и] в слові",
+        options: ["ле`бідь", "те`ма", "ве`чір", "дере`во"], answer: 3,
+        explain: "дере`во: перший [е] ненаголошений і наближається до [и]. В інших словах [е] під наголосом." },
+      { id: "v2-1-17", type: "single", q: "Ненаголошений [о] вимовляється чітко в слові",
+        options: ["голу`бка", "горбу`шка", "моро`з", "зозу`ля"], answer: 2,
+        explain: "У слові моро`з після ненаголошеного [о] немає складу з наголошеним [у]. В інших словах є, тому [о] наближається до [у]." },
+      { id: "v2-1-18", type: "single", q: "Ненаголошений [и] наближається до [е] в слові",
+        options: ["крини`ця", "ди`ня", "ли`па", "си`ній"], answer: 0,
+        explain: "крини`ця: перший [и] ненаголошений. В інших словах [и] під наголосом." },
+      { id: "v2-1-19", type: "single", q: "Чітко вимовляються ВСІ голосні в слові",
+        options: ["сестра`", "ду`мка", "голу`бка", "зеле`ний"], answer: 1,
+        explain: "ду`мка: [у] під наголосом, а [а] чіткий завжди. У словах сестра` й зеле`ний ненаголошений [е] наближається до [и], у слові голу`бка [о] — до [у]." },
+      { id: "v2-1-20", type: "single", q: "Правильним є твердження",
+        options: ["Ненаголошений [у] наближається до [о].", "Наголошені голосні вимовляються нечітко.", "Ненаголошені [е] та [и] можуть наближатися один до одного.", "Через вимову слово «село» пишемо з и."], answer: 2,
+        explain: "Наближення стосується ненаголошених [е] та [и] (а також [о] перед наголошеним [у]). [у] чіткий завжди, а написання від вимови не змінюється." }
+    ]
+  },
+  {
+    id: "l2-v2", lesson: 2, lessonTitle: "Приголосні звуки. Їх класифікація",
+    title: "Урок 2. Додатковий тест, варіант 2", minutes: 25,
+    questions: [
+      { id: "v2-2-1", type: "single", q: "Скільки пар утворюють тверді й м’які приголосні?",
+        options: ["10", "11", "8", "9"], answer: 3,
+        explain: "[д]–[д'], [т]–[т'], [з]–[з'], [с]–[с'], [д͡з]–[д͡з'], [ц]–[ц'], [л]–[л'], [н]–[н'], [р]–[р'] — дев’ять пар. [й] м’який, але пари не має." },
+      { id: "v2-2-2", type: "single", q: "Усі приголосні звуки м’які в слові",
+        options: ["сінь", "сік", "день", "люк"], answer: 0,
+        explain: "сінь [с'ін']. У слові сік твердий [к], у слові день — [д], у слові люк — [к]." },
+      { id: "v2-2-3", type: "single", q: "Усі приголосні звуки тверді в слові",
+        options: ["ліпа", "кінь", "шахи", "дзьоб"], answer: 2,
+        explain: "шахи: [ш], [х] перед а, и — тверді. ліпа — [л'], кінь — [н'], дзьоб — [д͡з']." },
+      { id: "v2-2-4", type: "single", q: "М’якого приголосного звука НЕМАЄ в слові",
+        options: ["ряд", "верба", "сіль", "тінь"], answer: 1,
+        explain: "верба: [в], [р], [б] тверді ([р] перед приголосним). ряд — [р'], сіль — [с'], [л'], тінь — [т'], [н']." },
+      { id: "v2-2-5", type: "single", q: "Пом’якшений приголосний звук є в слові",
+        options: ["фініш", "ніс", "ціль", "сіно"], answer: 0,
+        explain: "фініш: губний [ф] перед [і] пом’якшений. У словах ніс, ціль, сіно перед і стоять парні приголосні — вони м’які." },
+      { id: "v2-2-6", type: "single", q: "Перед [і] стоїть м’який (а не пом’якшений) приголосний у кожному слові рядка",
+        options: ["ліс, кіт, ніс", "ліс, тісто, віл", "діти, кіно, ніс", "ліс, тісто, ніс"], answer: 3,
+        explain: "[л'], [т'], [н'] мають тверді пари, тому вони м’які. У словах кіт, віл, кіно [к], [в] перед [і] лише пом’якшені." },
+      { id: "v2-2-7", type: "single", q: "Дзвінка пара до звука [с'] —",
+        options: ["[с]", "[з']", "[з]", "[ц']"], answer: 1,
+        explain: "М’який глухий [с'] має м’яку дзвінку пару [з']. [з] — пара до твердого [с]." },
+      { id: "v2-2-8", type: "single", q: "Лише глухі приголосні звуки є в слові",
+        options: ["шуба", "сокіл", "степ", "гриб"], answer: 2,
+        explain: "степ: [с], [т], [п]. У слові шуба є [б], у слові сокіл — сонорний [л], у слові гриб — [г], [р], [б]." },
+      { id: "v2-2-9", type: "single", q: "Лише дзвінкі приголосні звуки є в слові",
+        options: ["дуб", "суп", "кит", "шия"], answer: 0,
+        explain: "дуб: [д], [б]. У літературній вимові [б] у кінці слова не оглушується. В інших словах є глухі [с], [п], [к], [т], [ш]." },
+      { id: "v2-2-10", type: "single", q: "Сонорних приголосних НЕМАЄ в слові",
+        options: ["мак", "нора", "лис", "капуста"], answer: 3,
+        explain: "капуста: [к], [п], [с], [т] — шумні глухі. В інших словах є сонорні [м], [н], [р], [л]." },
+      { id: "v2-2-11", type: "single", q: "Шумний дзвінкий м’який приголосний є в слові",
+        options: ["тінь", "люк", "дядько", "сіль"], answer: 2,
+        explain: "дядько: [д'] — шумний дзвінкий м’який. тінь, сіль — м’які глухі [т'], [с'] і сонорні; люк — сонорний [л']." },
+      { id: "v2-2-12", type: "single", q: "Сонорний твердий приголосний є в кожному слові рядка",
+        options: ["лимон, тінь, сіль", "мама, рука, вода", "люк, ряд, ніс", "йод, лінь, ніс"], answer: 1,
+        explain: "мама — [м], рука — [р], вода — [в]. У словах тінь, сіль, люк, ряд, ніс, йод, лінь сонорні м’які." },
+      { id: "v2-2-13", type: "single", q: "Не має глухої пари звук",
+        options: ["[м]", "[ж]", "[б]", "[д͡ж]"], answer: 0,
+        explain: "[м] — сонорний, а сонорні глухих пар не мають. [ж] — [ш], [б] — [п], [д͡ж] — [ч]." },
+      { id: "v2-2-14", type: "single", q: "Звук [ґ] (а не [г]) вимовляємо в слові",
+        options: ["голка", "ґедзь", "гарбуз", "гніздо"], answer: 1,
+        explain: "ґедзь — буква ґ позначає задньоязиковий [ґ]. В інших словах гортанний [г]." },
+      { id: "v2-2-15", type: "single", q: "Звук [г] відрізняється від [ґ] тим, що",
+        options: ["[г] глухий, а [ґ] дзвінкий", "[г] має м’яку пару", "[г] позначаємо буквою ґ", "[г] утворюється в гортані без повного змикання"], answer: 3,
+        explain: "[г] — гортанний, його можна тягнути; [ґ] — задньоязиковий проривний. Обидва дзвінкі й тверді." },
+      { id: "v2-2-16", type: "single", q: "Звук [д͡ж] —",
+        options: ["глухий, твердий", "дзвінкий, м’який", "дзвінкий, шумний, твердий", "сонорний, твердий"], answer: 2,
+        explain: "[д͡ж] — один шумний дзвінкий звук, твердий, м’якої пари не має. Глуха пара — [ч]." },
+      { id: "v2-2-17", type: "single", q: "НЕПРАВИЛЬНИМ є твердження",
+        options: ["Пом’якшених приголосних звуків 10.", "М’яких приголосних звуків 10.", "Сонорних приголосних звуків 9.", "Глухих приголосних звуків 12."], answer: 0,
+        explain: "Пом’якшені — не окремі звуки, а варіанти твердих перед [і]; їх не рахують. Решта тверджень правильні." },
+      { id: "v2-2-18", type: "single", q: "Звук [р'] у слові «буря» —",
+        options: ["сонорний, твердий", "сонорний, м’який", "шумний дзвінкий, м’який", "глухий, м’який"], answer: 1,
+        explain: "[р'] перед я м’який; [р] — сонорний." },
+      { id: "v2-2-19", type: "match", q: "Установіть відповідність між словом і характеристикою ПЕРШОГО приголосного звука.",
+        items: [ { t: "1 жінка", a: 2 }, { t: "2 цукор", a: 0 }, { t: "3 ніс", a: 1 }, { t: "4 зять", a: 3 } ],
+        options: ["А шумний глухий, твердий", "Б сонорний, м’який", "В шумний дзвінкий, пом’якшений", "Г шумний дзвінкий, м’який", "Д сонорний, твердий"],
+        explain: "жінка — [ж] перед [і] пом’якшений; цукор — [ц] твердий глухий; ніс — [н'] сонорний м’який; зять — [з'] шумний дзвінкий м’який." },
+      { id: "v2-2-20", type: "match", q: "Установіть відповідність між звуком і його парою за дзвінкістю — глухістю.",
+        items: [ { t: "1 [д']", a: 2 }, { t: "2 [ч]", a: 3 }, { t: "3 [ґ]", a: 0 }, { t: "4 [з]", a: 1 } ],
+        options: ["А [к]", "Б [с]", "В [т']", "Г [д͡ж]", "Д [т]"],
+        explain: "[д'] — [т'] (м’який до м’якого), [ч] — [д͡ж], [ґ] — [к], [з] — [с]." }
+    ]
+  }
+];
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var TESTS = window.TESTS, KEY = "fgo-nmt-extra-v2", L = ["А", "Б", "В", "Г", "Д"];
+  var app = document.getElementById("app"), timerId = null, mem = null;
+
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return mem || {}; } }
+  function store(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { mem = s; } }
+  var S = load(); S.log = S.log || {};
+  function fmt(s) { return String(s).replace(/`/g, "́"); }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c]; }); }
+  function mmss(sec) { sec = Math.max(0, Math.round(sec)); var m = Math.floor(sec / 60), s = sec % 60; return (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s; }
+  function dt(ts) { return new Date(ts).toLocaleString("uk-UA", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" }); }
+  function maxOf(q) { return q.type === "match" ? q.items.length : 1; }
+  function scoreOf(q, a) {
+    if (q.type === "match") { var c = 0; q.items.forEach(function (it, i) { if (a && a[i] === it.a) c++; }); return c; }
+    return a === q.answer ? 1 : 0;
+  }
+  function answered(q, a) {
+    if (a === undefined || a === null) return false;
+    if (q.type === "match") return q.items.every(function (_, i) { return a[i] !== undefined && a[i] !== null; });
+    return true;
+  }
+  function optText(q, j) { return q.type === "match" ? q.options[j] : L[j] + " " + q.options[j]; }
+  function best(id) { var l = S.log[id] || []; return l.length ? Math.max.apply(null, l.map(function (r) { return r.percent; })) : null; }
+
+  function applyTheme() {
+    var t = S.theme || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", t);
+  }
+  function header() {
+    var h = document.getElementById("topbar");
+    h.innerHTML = "<div class='topbar-in'><a class='brand' href='#/'>Додаткові тести · варіант 2<small>Фонетика. Графіка. Орфоепія — підготовка до НМТ</small></a>" +
+      "<button class='btn theme-btn' data-theme-toggle aria-label='Перемкнути світлу або темну тему'>" + (document.documentElement.getAttribute("data-theme") === "dark" ? "☀ Світла" : "☾ Темна") + "</button></div>";
+    h.querySelector("[data-theme-toggle]").onclick = function () {
+      S.theme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark"; store(S); applyTheme(); header();
+    };
+  }
+
+  function viewHome() {
+    var html = "<div class='card'><h1>Додаткові тести, варіант 2</h1><p>Окремий варіант тестів до кожного уроку курсу. Запитання не повторюють тести з основного курсу. У кожного тесту є таймер, після завершення ви побачите правильні відповіді й пояснення.</p></div>";
+    TESTS.forEach(function (t) {
+      var n = (S.log[t.id] || []).length, b = best(t.id);
+      html += "<div class='card lesson-item'><div class='lesson-num'>" + t.lesson + "</div><div><h2>Урок " + t.lesson + ". " + esc(t.lessonTitle) + "</h2>" +
+        "<p class='muted small'>" + t.questions.length + " завдань · " + t.minutes + " хв · спроб: " + n + (b !== null ? " · найкращий результат: <b>" + b + "%</b>" : "") + "</p>" +
+        "<a class='btn acc' href='#/test/" + t.id + "'>" + (n ? "Пройти ще раз" : "Почати тест") + "</a></div></div>";
+    });
+    app.innerHTML = html;
+  }
+
+  function viewTest(t) {
+    var st = { cur: 0, ans: {}, start: Date.now(), done: false };
+    var limit = t.minutes * 60;
+    function tick() {
+      var left = limit - (Date.now() - st.start) / 1000, el = document.getElementById("tm");
+      if (el) { el.textContent = "⏱ " + mmss(left); el.className = "timer" + (left < 60 ? " low" : ""); }
+      if (left <= 0) finish(true);
+    }
+    function render() {
+      var q = t.questions[st.cur], a = st.ans[q.id];
+      var nav = t.questions.map(function (qq, i) {
+        return "<button data-i='" + i + "' class='" + (answered(qq, st.ans[qq.id]) ? "ans " : "") + (i === st.cur ? "cur" : "") + "' aria-label='Завдання " + (i + 1) + "'>" + (i + 1) + "</button>";
+      }).join("");
+      var body;
+      if (q.type === "match") {
+        body = "<p class='small muted'>Варіанти: " + q.options.map(function (o) { return esc(fmt(o)); }).join("; ") + "</p>" + q.items.map(function (it, i) {
+          var v = a && a[i] !== undefined && a[i] !== null ? a[i] : "";
+          return "<div class='row'><span class='lbl'>" + esc(fmt(it.t)) + "</span><select data-k='" + i + "' aria-label='" + esc(it.t) + "'><option value=''>—</option>" +
+            q.options.map(function (o, j) { return "<option value='" + j + "'" + (v === j ? " selected" : "") + ">" + L[j] + "</option>"; }).join("") + "</select></div>";
+        }).join("");
+      } else {
+        body = q.options.map(function (o, j) {
+          return "<label class='opt'><input type='radio' name='q' value='" + j + "'" + (a === j ? " checked" : "") + "><span>" + esc(fmt(optText(q, j))) + "</span></label>";
+        }).join("");
+      }
+      app.innerHTML = "<p><a href='#/'>← Усі тести</a></p><div class='card'><h1>" + esc(t.title) + "</h1>" +
+        "<div class='test-top'><span class='timer' id='tm'></span><span class='muted' id='cnt'></span></div>" +
+        "<div class='qnav'>" + nav + "</div></div>" +
+        "<div class='card'><span class='pill'>Завдання " + (st.cur + 1) + " з " + t.questions.length + "</span><p class='q'>" + esc(fmt(q.q)) + "</p>" + body +
+        "<div class='btn-row'><button class='btn sec' id='prev'" + (st.cur === 0 ? " disabled" : "") + ">← Назад</button>" +
+        (st.cur < t.questions.length - 1 ? "<button class='btn' id='next'>Далі →</button>" : "") +
+        "<button class='btn acc' id='fin'>Завершити тест</button></div></div>";
+      Array.prototype.forEach.call(app.querySelectorAll("input[type=radio]"), function (r) { r.onchange = function () { st.ans[q.id] = Number(r.value); refresh(); }; });
+      Array.prototype.forEach.call(app.querySelectorAll("select"), function (s) {
+        s.onchange = function () { var x = st.ans[q.id] || {}; x[Number(s.dataset.k)] = s.value === "" ? null : Number(s.value); st.ans[q.id] = x; refresh(); };
+      });
+      Array.prototype.forEach.call(app.querySelectorAll(".qnav button"), function (b) { b.onclick = function () { st.cur = Number(b.dataset.i); render(); }; });
+      document.getElementById("prev").onclick = function () { if (st.cur > 0) { st.cur--; render(); } };
+      var nx = document.getElementById("next"); if (nx) nx.onclick = function () { st.cur++; render(); };
+      document.getElementById("fin").onclick = function () {
+        var left = t.questions.length - t.questions.filter(function (qq) { return answered(qq, st.ans[qq.id]); }).length;
+        if (left && !confirm("Без відповіді залишилось завдань: " + left + ". Завершити тест?")) return;
+        finish(false);
+      };
+      refresh(); tick();
+    }
+    function refresh() {
+      var done = t.questions.filter(function (qq) { return answered(qq, st.ans[qq.id]); }).length;
+      var c = document.getElementById("cnt"); if (c) c.textContent = "Відповідей: " + done + " з " + t.questions.length;
+      Array.prototype.forEach.call(app.querySelectorAll(".qnav button"), function (b, i) {
+        b.classList.toggle("ans", answered(t.questions[i], st.ans[t.questions[i].id]));
+      });
+    }
+    function finish(timeUp) {
+      if (st.done) return; st.done = true;
+      clearInterval(timerId); timerId = null;
+      var score = 0, max = 0, dur = Math.min(limit, Math.round((Date.now() - st.start) / 1000));
+      t.questions.forEach(function (q) { score += scoreOf(q, st.ans[q.id]); max += maxOf(q); });
+      var percent = Math.round(score / max * 100);
+      (S.log[t.id] = S.log[t.id] || []).push({ ts: Date.now(), score: score, max: max, percent: percent, duration: dur });
+      store(S);
+      var rev = t.questions.map(function (q, i) {
+        var a = st.ans[q.id], sc = scoreOf(q, a), ok = sc === maxOf(q), yours, right;
+        if (q.type === "match") {
+          yours = q.items.map(function (it, k) { return esc(fmt(it.t)) + " → " + (a && a[k] !== undefined && a[k] !== null ? esc(fmt(q.options[a[k]])) : "немає відповіді"); }).join("<br>");
+          right = q.items.map(function (it) { return esc(fmt(it.t)) + " → " + esc(fmt(q.options[it.a])); }).join("<br>");
+        } else {
+          yours = a === undefined || a === null ? "немає відповіді" : esc(fmt(optText(q, a)));
+          right = esc(fmt(optText(q, q.answer)));
+        }
+        return "<div class='review-item " + (ok ? "ok" : "bad") + "'><b>" + (i + 1) + ". " + esc(fmt(q.q)) + "</b> <span class='small muted'>(" + sc + "/" + maxOf(q) + ")</span>" +
+          "<p class='small'>Ваша відповідь: " + yours + "</p>" + (ok ? "" : "<p class='small'>Правильна відповідь: " + right + "</p>") +
+          "<p class='small muted'>" + esc(fmt(q.explain)) + "</p></div>";
+      }).join("");
+      var hist = S.log[t.id].slice().reverse().map(function (r, i, arr) {
+        return "<tr><td>" + (arr.length - i) + "</td><td>" + dt(r.ts) + "</td><td>" + r.score + "/" + r.max + "</td><td>" + r.percent + "%</td><td>" + mmss(r.duration) + "</td></tr>";
+      }).join("");
+      app.innerHTML = "<p><a href='#/'>← Усі тести</a></p><div class='card'><h1>" + esc(t.title) + "</h1>" + (timeUp ? "<p><b>Час вичерпано.</b></p>" : "") +
+        "<div class='score-big'>" + score + " / " + max + "</div><p>Результат: <b>" + percent + "%</b> · час: " + mmss(dur) + "</p>" +
+        "<div class='btn-row'><a class='btn acc' href='#/test/" + t.id + "?r=" + Date.now() + "'>Пройти ще раз</a><a class='btn sec' href='#/'>До списку тестів</a></div></div>" +
+        "<div class='card'><h2>Відповіді та пояснення</h2>" + rev + "</div>" +
+        "<div class='card'><h2>Журнал спроб</h2><div class='table-wrap'><table><thead><tr><th>№</th><th>Дата</th><th>Бали</th><th>%</th><th>Час</th></tr></thead><tbody>" + hist + "</tbody></table></div>" +
+        "<button class='btn danger' id='clr'>Очистити журнал цього тесту</button></div>";
+      document.getElementById("clr").onclick = function () { if (confirm("Видалити всі спроби цього тесту?")) { S.log[t.id] = []; store(S); location.hash = "#/"; } };
+      window.scrollTo(0, 0);
+    }
+    render();
+    timerId = setInterval(tick, 1000);
+  }
+
+  function route() {
+    if (timerId) { clearInterval(timerId); timerId = null; }
+    applyTheme(); header();
+    var m = location.hash.match(/^#\/test\/([\w-]+)/);
+    var t = m && TESTS.filter(function (x) { return x.id === m[1]; })[0];
+    if (t) viewTest(t); else viewHome();
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+</body>
+</html>
